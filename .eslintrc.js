@@ -1,41 +1,48 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  plugins: [
+    "@typescript-eslint",
+    "react-hooks",
+    "react",
+    "simple-import-sort",
+    "import",
   ],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  plugins: ['eslint-plugin-import-helpers'],
   rules: {
-    'no-shadow': 'warn',
-    '@typescript-eslint/explicit-member-accessibility': 'off',
-    '@typescript-eslint/prefer-interface': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/indent': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-use-before-define': 'off',
-    '@typescript-eslint/camelcase': 'off',
-    '@typescript-eslint/array-type': 'off',
-    '@typescript-eslint/no-object-literal-type-assertion': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    'import-helpers/order-imports': [
-      'warn',
+    "prettier/prettier": ["warn"],
+    "import/no-extraneous-dependencies": 0,
+    "simple-import-sort/sort": "error",
+    "sort-imports": "off",
+    "import/order": "off",
+    "import/no-deprecated": "warn",
+    "import/no-duplicates": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
       {
-        newlinesBetween: 'always',
-        groups: ['module', '/^@shared/', ['parent', 'sibling', 'index']],
-        alphabetize: { order: 'asc', ignoreCase: true },
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        args: "after-used",
+        ignoreRestSiblings: true,
       },
     ],
   },
   settings: {
     react: {
-      version: 'detect'
-    }
+      version: "detect",
+    },
   }
 };
